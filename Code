@@ -1,0 +1,37 @@
+
+int Moisture = A1;
+int analogMoisture = 0;
+
+
+void setup() {
+
+    pinMode(D7, OUTPUT);
+    
+    
+    pinMode(Moisture, INPUT);
+    
+}
+
+
+
+void loop() {
+    
+    if (Particle.connected() == false) {
+        Particle.connect();
+    }
+    
+    digitalWrite(D7, HIGH);
+
+    
+    analogMoisture = analogRead(Moisture);
+    
+            
+        
+    Particle.publish("Moisture_reading", String(analogMoisture), PUBLIC);
+            
+            
+    
+    delay(30000);
+    
+    
+}
